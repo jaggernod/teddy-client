@@ -9,5 +9,18 @@
 #import "TTRecorder.h"
 
 @implementation TTRecorder
+{
+    BOOL _isRecording;
+}
+
+- (BOOL)isRecording
+{
+    return _isRecording;
+}
+
+- (void)start
+{
+    _isRecording = YES;
+}
 
 @end

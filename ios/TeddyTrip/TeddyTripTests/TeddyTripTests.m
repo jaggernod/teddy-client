@@ -33,4 +33,10 @@
     XCTAssertFalse([recorder isRecording]);
 }
 
+- (void)testRecorderStartStartsRecording
+{
+    TTRecorder *recorder = [[TTRecorder alloc] init];
+    [recorder start];
+    XCTAssertTrue([recorder isRecording]);
+}
 @end

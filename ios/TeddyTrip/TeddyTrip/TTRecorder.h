@@ -12,4 +12,6 @@
 
 @property (readonly) BOOL isRecording;
 
+- (void)start;
+
 @end
