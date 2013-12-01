@@ -7,6 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
+#import "TTRecorder.h"
 
 @interface TeddyTripTests : XCTestCase
 
@@ -26,9 +27,10 @@
     [super tearDown];
 }
 
-- (void)testExample
+- (void)testRecorderNotRecordingInInitialState
 {
-    XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
+    TTRecorder *recorder = [[TTRecorder alloc] init];
+    XCTAssertFalse([recorder isRecording]);
 }
 
 @end

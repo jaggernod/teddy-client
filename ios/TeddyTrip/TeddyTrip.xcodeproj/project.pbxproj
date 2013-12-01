@@ -21,6 +21,7 @@
 		C027C02C184550C00035268D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C027C00E184550C00035268D /* UIKit.framework */; };
 		C027C034184550C00035268D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C027C032184550C00035268D /* InfoPlist.strings */; };
 		C027C036184550C00035268D /* TeddyTripTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C027C035184550C00035268D /* TeddyTripTests.m */; };
+		C027C041184B30CE0035268D /* TTRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = C027C040184B30CE0035268D /* TTRecorder.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,8 @@
 		C027C031184550C00035268D /* TeddyTripTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TeddyTripTests-Info.plist"; sourceTree = "<group>"; };
 		C027C033184550C00035268D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C027C035184550C00035268D /* TeddyTripTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TeddyTripTests.m; sourceTree = "<group>"; };
+		C027C03F184B30CE0035268D /* TTRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTRecorder.h; sourceTree = "<group>"; };
+		C027C040184B30CE0035268D /* TTRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTRecorder.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +122,8 @@
 				C027C020184550C00035268D /* TTViewController.m */,
 				C027C022184550C00035268D /* Images.xcassets */,
 				C027C011184550C00035268D /* Supporting Files */,
+				C027C03F184B30CE0035268D /* TTRecorder.h */,
+				C027C040184B30CE0035268D /* TTRecorder.m */,
 			);
 			path = TeddyTrip;
 			sourceTree = "<group>";
@@ -250,6 +255,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C027C01B184550C00035268D /* TTAppDelegate.m in Sources */,
+				C027C041184B30CE0035268D /* TTRecorder.m in Sources */,
 				C027C017184550C00035268D /* main.m in Sources */,
 				C027C021184550C00035268D /* TTViewController.m in Sources */,
 			);
@@ -460,6 +466,7 @@
 				C027C03B184550C00035268D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C027C03C184550C00035268D /* Build configuration list for PBXNativeTarget "TeddyTripTests" */ = {
 			isa = XCConfigurationList;
@@ -468,6 +475,7 @@
 				C027C03E184550C00035268D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
