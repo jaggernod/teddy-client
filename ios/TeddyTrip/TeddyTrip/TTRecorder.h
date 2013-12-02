@@ -13,6 +13,7 @@
 
 - (void)didStartRecording;
 - (void)didStopRecording;
+- (void)distanceDidChange:(double)distanceMeters;
 
 @end
 

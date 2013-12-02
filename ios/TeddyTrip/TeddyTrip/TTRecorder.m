@@ -54,6 +54,7 @@
         [_trace removeAllObjects];
         if ([self delegate]) {
             [[self delegate] didStartRecording];
+            [[self delegate] distanceDidChange:[self distanceMeters]];
         }
     }
 }

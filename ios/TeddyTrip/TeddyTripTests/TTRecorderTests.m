@@ -16,6 +16,7 @@
     TTRecorder *_recorder;
     int _recorderStartCount;
     int _recorderStopCount;
+    int _recorderDistanceCount;
 }
 
 @end
@@ -30,6 +31,11 @@
 - (void)didStopRecording
 {
     _recorderStopCount += 1;
+}
+
+- (void)distanceDidChange:(double)distanceMeters
+{
+    _recorderDistanceCount += 1;
 }
 
 - (void)setUp
@@ -136,6 +142,12 @@
     [_locationProvider addLocation:thirdLocation];
     double distance = [firstLocation distanceFromLocation:secondLocation] + [secondLocation distanceFromLocation:thirdLocation];
     XCTAssertEqualWithAccuracy(distance, [_recorder distanceMeters], 0.1);
+}
+
+- (void)testRecorderNotifiesOfDistanceChangeOnStart
+{
+    [_recorder start];
+    XCTAssertEqual(1, _recorderDistanceCount);
 }
 
 @end
