@@ -117,4 +117,25 @@
     XCTAssertEqual(0U, [[_recorder trace] count]);
 }
 
+- (void)testRecordingHasZeroDistanceWithOneLocation
+{
+    [_recorder start];
+    CLLocation *location = [[CLLocation alloc] initWithLatitude:53.2 longitude:13.4];
+    [_locationProvider addLocation:location];
+    XCTAssertEqual(0.0, [_recorder distanceMeters]);
+}
+
+- (void)testRecordingHasCorrectDistanceWithThreeLocations
+{
+    [_recorder start];
+    CLLocation *firstLocation = [[CLLocation alloc] initWithLatitude:53.2 longitude:13.4];
+    CLLocation *secondLocation = [[CLLocation alloc] initWithLatitude:53.3 longitude:13.3];
+    CLLocation *thirdLocation = [[CLLocation alloc] initWithLatitude:53.4 longitude:13.2];
+    [_locationProvider addLocation:firstLocation];
+    [_locationProvider addLocation:secondLocation];
+    [_locationProvider addLocation:thirdLocation];
+    double distance = [firstLocation distanceFromLocation:secondLocation] + [secondLocation distanceFromLocation:thirdLocation];
+    XCTAssertEqualWithAccuracy(distance, [_recorder distanceMeters], 0.1);
+}
+
 @end

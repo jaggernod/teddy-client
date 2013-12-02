@@ -36,6 +36,17 @@
     return _isRecording;
 }
 
+- (double)distanceMeters
+{
+    double distance = 0.0;
+    if ([_trace count] > 1) {
+        for (uint i = 1; i < [_trace count]; ++i) {
+            distance += [[_trace objectAtIndex:i] distanceFromLocation:[_trace objectAtIndex:(i - 1)]];
+        }
+    }
+    return distance;
+}
+
 - (void)start
 {
     if (!_isRecording) {

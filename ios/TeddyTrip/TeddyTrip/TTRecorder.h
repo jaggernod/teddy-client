@@ -20,6 +20,7 @@
 
 @property (weak) id<TTRecorderDelegate> delegate;
 @property (readonly) BOOL isRecording;
+@property (readonly) double distanceMeters;
 @property (readonly) NSArray *trace;
 
 - (id)initWithLocationProvider:(TTLocationProvider *)locationProvider;
