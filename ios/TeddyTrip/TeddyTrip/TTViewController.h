@@ -15,5 +15,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *stopButton;
 
 - (IBAction)startButtonPressed:(id)sender;
+- (IBAction)stopButtonPressed:(id)sender;
 
 @end

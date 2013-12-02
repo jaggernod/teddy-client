@@ -15,6 +15,7 @@
     TTMockLocationProvider *_locationProvider;
     TTRecorder *_recorder;
     int _recorderStartCount;
+    int _recorderStopCount;
 }
 
 @end
@@ -24,6 +25,11 @@
 - (void)didStartRecording
 {
     _recorderStartCount += 1;
+}
+
+- (void)didStopRecording
+{
+    _recorderStopCount += 1;
 }
 
 - (void)setUp
@@ -79,6 +85,13 @@
     [_recorder start];
     [_recorder stop];
     XCTAssertFalse([_recorder isRecording]);
+}
+
+- (void)testRecorderNotifiesWhenRecordingStops
+{
+    [_recorder start];
+    [_recorder stop];
+    XCTAssertEqual(1, _recorderStopCount);
 }
 
 @end

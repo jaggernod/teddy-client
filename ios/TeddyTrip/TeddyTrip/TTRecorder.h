@@ -12,6 +12,7 @@
 @protocol TTRecorderDelegate <NSObject>
 
 - (void)didStartRecording;
+- (void)didStopRecording;
 
 @end
 

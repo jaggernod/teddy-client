@@ -41,10 +41,21 @@
     [_recorder start];
 }
 
+- (void)stopButtonPressed:(id)sender
+{
+    [_recorder stop];
+}
+
 - (void)didStartRecording
 {
     [[self startButton] setHidden:YES];
     [[self stopButton] setHidden:NO];
+}
+
+- (void)didStopRecording
+{
+    [[self startButton] setHidden:NO];
+    [[self stopButton] setHidden:YES];
 }
 
 @end

@@ -34,6 +34,7 @@
                                 </state>
                                 <connections>
                                     <action selector="startButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="r8z-aN-1Kj"/>
+                                    <action selector="stopButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="cSG-RW-Ihh"/>
                                 </connections>
                             </button>
                         </subviews>

@@ -47,6 +47,9 @@
 - (void)stop
 {
     _isRecording = NO;
+    if ([self delegate]) {
+        [[self delegate] didStopRecording];
+    }
 }
 
 - (void)didReceiveLocation:(CLLocation*)location
