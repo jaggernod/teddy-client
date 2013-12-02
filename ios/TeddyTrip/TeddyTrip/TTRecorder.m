@@ -38,9 +38,11 @@
 
 - (void)start
 {
-    _isRecording = YES;
-    if ([self delegate]) {
-        [[self delegate] didStartRecording];
+    if (!_isRecording) {
+        _isRecording = YES;
+        if ([self delegate]) {
+            [[self delegate] didStartRecording];
+        }
     }
 }
 
