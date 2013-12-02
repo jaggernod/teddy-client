@@ -40,6 +40,7 @@
 {
     if (!_isRecording) {
         _isRecording = YES;
+        [_trace removeAllObjects];
         if ([self delegate]) {
             [[self delegate] didStartRecording];
         }

@@ -107,4 +107,14 @@
     XCTAssertEqual(0, _recorderStopCount);
 }
 
+- (void)testStartingNewRecordingClearsTrace
+{
+    [_recorder start];
+    CLLocation *location = [[CLLocation alloc] initWithLatitude:53.2 longitude:13.4];
+    [_locationProvider addLocation:location];
+    [_recorder stop];
+    [_recorder start];
+    XCTAssertEqual(0U, [[_recorder trace] count]);
+}
+
 @end
