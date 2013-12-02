@@ -1,6 +1,6 @@
 //
-//  TeddyTripTests.m
-//  TeddyTripTests
+//  TTRecorderTests.m
+//  TTRecorderTests
 //
 //  Created by continuous integration on 26/11/13.
 //
@@ -9,14 +9,15 @@
 #import <XCTest/XCTest.h>
 #import "TTRecorder.h"
 
-@interface TeddyTripTests : XCTestCase <TTRecorderDelegate>
+@interface TTRecorderTests : XCTestCase <TTRecorderDelegate>
 {
+    TTRecorder *_recorder;
     int _recorderStartCount;
 }
 
 @end
 
-@implementation TeddyTripTests
+@implementation TTRecorderTests
 
 - (void)didStartRecording
 {
@@ -27,6 +28,8 @@
 {
     [super setUp];
     // Put setup code here. This method is called before the invocation of each test method in the class.
+    _recorder = [[TTRecorder alloc] init];
+    [_recorder setDelegate:self];
 }
 
 - (void)tearDown
@@ -37,22 +40,18 @@
 
 - (void)testRecorderNotRecordingInInitialState
 {
-    TTRecorder *recorder = [[TTRecorder alloc] init];
-    XCTAssertFalse([recorder isRecording]);
+    XCTAssertFalse([_recorder isRecording]);
 }
 
 - (void)testRecorderStartStartsRecording
 {
-    TTRecorder *recorder = [[TTRecorder alloc] init];
-    [recorder start];
-    XCTAssertTrue([recorder isRecording]);
+    [_recorder start];
+    XCTAssertTrue([_recorder isRecording]);
 }
 
 - (void)testRecorderNotifiesWhenRecordingStarts
 {
-    TTRecorder *recorder = [[TTRecorder alloc] init];
-    [recorder setDelegate:self];
-    [recorder start];
+    [_recorder start];
     XCTAssertEqual(1, _recorderStartCount);
 }
 
