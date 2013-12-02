@@ -8,9 +8,11 @@
 
 #import <XCTest/XCTest.h>
 #import "TTRecorder.h"
+#import "TTMockLocationProvider.h"
 
 @interface TTRecorderTests : XCTestCase <TTRecorderDelegate>
 {
+    TTMockLocationProvider *_locationProvider;
     TTRecorder *_recorder;
     int _recorderStartCount;
 }
@@ -28,7 +30,8 @@
 {
     [super setUp];
     // Put setup code here. This method is called before the invocation of each test method in the class.
-    _recorder = [[TTRecorder alloc] init];
+    _locationProvider = [[TTMockLocationProvider alloc] init];
+    _recorder = [[TTRecorder alloc] initWithLocationProvider:_locationProvider];
     [_recorder setDelegate:self];
 }
 
@@ -53,6 +56,15 @@
 {
     [_recorder start];
     XCTAssertEqual(1, _recorderStartCount);
+}
+
+- (void)testRecorderKeepsTrackOfReceivedLocations
+{
+    [_recorder start];
+    CLLocation *location = [[CLLocation alloc] initWithLatitude:53.2 longitude:13.4];
+    [_locationProvider addLocation:location];
+    XCTAssertEqual(1U, [[_recorder trace] count]);
+    XCTAssertEqual(location, [[_recorder trace] objectAtIndex:0]);
 }
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "TTLocationProvider.h"
 
 @protocol TTRecorderDelegate <NSObject>
 
@@ -14,10 +15,13 @@
 
 @end
 
-@interface TTRecorder : NSObject
+@interface TTRecorder : NSObject <TTLocationProviderDelegate>
 
 @property (weak) id<TTRecorderDelegate> delegate;
 @property (readonly) BOOL isRecording;
+@property (readonly) NSArray *trace;
+
+- (id)initWithLocationProvider:(TTLocationProvider *)locationProvider;
 
 - (void)start;
 

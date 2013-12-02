@@ -11,6 +11,24 @@
 @implementation TTRecorder
 {
     BOOL _isRecording;
+    NSMutableArray *_trace;
+}
+
+- (NSArray *)trace
+{
+    return _trace;
+}
+
+- (id)initWithLocationProvider:(TTLocationProvider *)locationProvider
+{
+    self = [super init];
+    
+    if (self)
+    {
+        _trace = [[NSMutableArray alloc] init];
+        [locationProvider setDelegate:self];
+    }
+    return self;
 }
 
 - (BOOL)isRecording
@@ -24,6 +42,11 @@
     if ([self delegate]) {
         [[self delegate] didStartRecording];
     }
+}
+
+- (void)didReceiveLocation:(CLLocation*)location
+{
+    [_trace addObject:location];
 }
 
 @end
