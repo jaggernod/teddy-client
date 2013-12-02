@@ -74,4 +74,11 @@
     XCTAssertEqual(0U, [[_recorder trace] count]);
 }
 
+- (void)testRecorderStopStopsRecording
+{
+    [_recorder start];
+    [_recorder stop];
+    XCTAssertFalse([_recorder isRecording]);
+}
+
 @end

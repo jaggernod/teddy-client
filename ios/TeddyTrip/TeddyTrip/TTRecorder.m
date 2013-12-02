@@ -44,6 +44,11 @@
     }
 }
 
+- (void)stop
+{
+    _isRecording = NO;
+}
+
 - (void)didReceiveLocation:(CLLocation*)location
 {
     if (_isRecording)

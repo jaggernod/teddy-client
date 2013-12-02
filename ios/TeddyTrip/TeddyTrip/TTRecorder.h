@@ -24,5 +24,6 @@
 - (id)initWithLocationProvider:(TTLocationProvider *)locationProvider;
 
 - (void)start;
+- (void)stop;
 
 @end
