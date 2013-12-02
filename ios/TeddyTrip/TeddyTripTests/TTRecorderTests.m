@@ -101,4 +101,10 @@
     XCTAssertEqual(1, _recorderStartCount);
 }
 
+- (void)testStoppingRecordingDoesNothingWhenNotRecording
+{
+    [_recorder stop];
+    XCTAssertEqual(0, _recorderStopCount);
+}
+
 @end

@@ -48,9 +48,11 @@
 
 - (void)stop
 {
-    _isRecording = NO;
-    if ([self delegate]) {
-        [[self delegate] didStopRecording];
+    if (_isRecording) {
+        _isRecording = NO;
+        if ([self delegate]) {
+            [[self delegate] didStopRecording];
+        }
     }
 }
 
