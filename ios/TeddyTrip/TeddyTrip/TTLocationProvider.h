@@ -19,4 +19,6 @@
 
 @property (weak) id<TTLocationProviderDelegate> delegate;
 
+- (id)initWithLocationManager:(CLLocationManager *)locationManager;
+
 @end

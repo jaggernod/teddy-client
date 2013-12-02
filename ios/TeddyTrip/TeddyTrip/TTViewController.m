@@ -11,6 +11,8 @@
 
 @interface TTViewController ()
 {
+    CLLocationManager *_locationManager;
+    TTLocationProvider *_locationProvider;
     TTRecorder *_recorder;
 }
 
@@ -22,7 +24,9 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    _recorder = [[TTRecorder alloc] init];
+    _locationManager = [[CLLocationManager alloc] init];
+    _locationProvider = [[TTLocationProvider alloc] initWithLocationManager:_locationManager];
+    _recorder = [[TTRecorder alloc] initWithLocationProvider:_locationProvider];
     [_recorder setDelegate:self];
 }
 
