@@ -21,6 +21,9 @@
 - (void)start
 {
     _isRecording = YES;
+    if ([self delegate]) {
+        [[self delegate] didStartRecording];
+    }
 }
 
 @end

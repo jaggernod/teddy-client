@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TTRecorder.h"
 
-@interface TTViewController : UIViewController
+@interface TTViewController : UIViewController <TTRecorderDelegate>
+
+@property (weak, nonatomic) IBOutlet UIButton *startButton;
+@property (weak, nonatomic) IBOutlet UIButton *stopButton;
+
+- (IBAction)startButtonPressed:(id)sender;
 
 @end

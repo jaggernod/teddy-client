@@ -9,11 +9,19 @@
 #import <XCTest/XCTest.h>
 #import "TTRecorder.h"
 
-@interface TeddyTripTests : XCTestCase
+@interface TeddyTripTests : XCTestCase <TTRecorderDelegate>
+{
+    int _recorderStartCount;
+}
 
 @end
 
 @implementation TeddyTripTests
+
+- (void)didStartRecording
+{
+    _recorderStartCount += 1;
+}
 
 - (void)setUp
 {
@@ -39,4 +47,13 @@
     [recorder start];
     XCTAssertTrue([recorder isRecording]);
 }
+
+- (void)testRecorderNotifiesWhenRecordingStarts
+{
+    TTRecorder *recorder = [[TTRecorder alloc] init];
+    [recorder setDelegate:self];
+    [recorder start];
+    XCTAssertEqual(1, _recorderStartCount);
+}
+
 @end
