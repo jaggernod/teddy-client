@@ -46,7 +46,10 @@
 
 - (void)didReceiveLocation:(CLLocation*)location
 {
-    [_trace addObject:location];
+    if (_isRecording)
+    {
+        [_trace addObject:location];
+    }
 }
 
 @end

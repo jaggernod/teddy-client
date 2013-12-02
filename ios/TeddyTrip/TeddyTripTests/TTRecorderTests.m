@@ -67,4 +67,11 @@
     XCTAssertEqual(location, [[_recorder trace] objectAtIndex:0]);
 }
 
+- (void)testRecorderAddsLocationsOnlyWhenRecording
+{
+    CLLocation *location = [[CLLocation alloc] initWithLatitude:53.2 longitude:13.4];
+    [_locationProvider addLocation:location];
+    XCTAssertEqual(0U, [[_recorder trace] count]);
+}
+
 @end
