@@ -72,6 +72,18 @@
     XCTAssertNotEqual([tripZero name], [tripOne name]);
 }
 
+- (void)testTripStoreTripsAreOrderedLatestFirst
+{
+    [self recordTrip:1];
+    double firstDistance = [_recorder distanceMeters];
+    [self recordTrip:2];
+    double secondDistance = [_recorder distanceMeters];
+    TTTrip *tripZero = [_tripStore tripAtIndex:0];
+    TTTrip *tripOne = [_tripStore tripAtIndex:1];
+    XCTAssertEqual(secondDistance, [tripZero distanceMeters]);
+    XCTAssertEqual(firstDistance, [tripOne distanceMeters]);
+}
+
 - (void)recordTrip:(int)length
 {
     CLLocation *firstLocation = [[CLLocation alloc] initWithLatitude:53.2 longitude:13.4];
