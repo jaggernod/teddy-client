@@ -26,8 +26,7 @@
 - (id)initWithLocationManager:(CLLocationManager *)locationManager
 {
     self = [super init];
-    if (self)
-    {
+    if (self) {
         _locationManager = locationManager;
         [_locationManager setDelegate:self];
         [_locationManager startUpdatingLocation];

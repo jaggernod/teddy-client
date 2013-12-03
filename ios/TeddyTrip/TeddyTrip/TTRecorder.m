@@ -23,8 +23,7 @@
 {
     self = [super init];
     
-    if (self)
-    {
+    if (self) {
         _trace = [[NSMutableArray alloc] init];
         [locationProvider setDelegate:self];
     }
@@ -71,8 +70,7 @@
 
 - (void)didReceiveLocation:(CLLocation*)location
 {
-    if (_isRecording)
-    {
+    if (_isRecording) {
         [_trace addObject:location];
         if ([self delegate]) {
             [[self delegate] distanceDidChange:[self distanceMeters]];

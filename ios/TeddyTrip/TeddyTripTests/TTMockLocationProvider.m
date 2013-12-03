@@ -12,8 +12,7 @@
 
 - (void)addLocation:(CLLocation*)location
 {
-    if ([self delegate])
-    {
+    if ([self delegate]) {
         [[self delegate] didReceiveLocation:location];
     }
 }
