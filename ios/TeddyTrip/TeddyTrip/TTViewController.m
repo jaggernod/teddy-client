@@ -58,4 +58,9 @@
     [[self stopButton] setHidden:YES];
 }
 
+- (void)distanceDidChange:(double)distanceMeters
+{
+    [[self distanceLabel] setText:[NSString stringWithFormat:@"%.0f m", distanceMeters]];
+}
+
 @end

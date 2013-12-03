@@ -150,4 +150,14 @@
     XCTAssertEqual(1, _recorderDistanceCount);
 }
 
+- (void)testRecorderNotifiesOfDistanceChangeOnLocationUpdates
+{
+    [_recorder start];
+    CLLocation *firstLocation = [[CLLocation alloc] initWithLatitude:53.2 longitude:13.4];
+    CLLocation *secondLocation = [[CLLocation alloc] initWithLatitude:53.3 longitude:13.3];
+    [_locationProvider addLocation:firstLocation];
+    [_locationProvider addLocation:secondLocation];
+    XCTAssertEqual(3, _recorderDistanceCount);
+}
+
 @end

@@ -74,6 +74,9 @@
     if (_isRecording)
     {
         [_trace addObject:location];
+        if ([self delegate]) {
+            [[self delegate] distanceDidChange:[self distanceMeters]];
+        }
     }
 }
 
