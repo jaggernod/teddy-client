@@ -10,6 +10,8 @@
 
 @class TTTrip;
 
+static NSString * const kDidAddNewTripNotification = @"TTDidAddNewTrip";
+
 @interface TTTripStore : NSObject
 
 - (id)init;

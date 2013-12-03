@@ -17,11 +17,17 @@
     TTTripStore *_tripStore;
     TTRecorder *_recorder;
     TTMockLocationProvider *_locationProvider;
+    int _addNewTripCount;
 }
 
 @end
 
 @implementation TTTripStoreTests
+
+- (void)didAddNewTrip:(NSNotification*)note
+{
+    _addNewTripCount += 1;
+}
 
 - (void)setUp
 {
@@ -30,11 +36,13 @@
     _locationProvider = [[TTMockLocationProvider alloc] init];
     _recorder = [[TTRecorder alloc] initWithLocationProvider:_locationProvider];
     _tripStore = [[TTTripStore alloc] init];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didAddNewTrip:) name:kDidAddNewTripNotification object:_tripStore];
 }
 
 - (void)tearDown
 {
     // Put teardown code here; it will be run once, after the last test case.
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     [super tearDown];
 }
 
@@ -82,6 +90,12 @@
     TTTrip *tripOne = [_tripStore tripAtIndex:1];
     XCTAssertEqual(secondDistance, [tripZero distanceMeters]);
     XCTAssertEqual(firstDistance, [tripOne distanceMeters]);
+}
+
+- (void)testTripStoreNotifiesOnTripAddition
+{
+    [self recordTrip:1];
+    XCTAssertEqual(1, _addNewTripCount);
 }
 
 - (void)recordTrip:(int)length

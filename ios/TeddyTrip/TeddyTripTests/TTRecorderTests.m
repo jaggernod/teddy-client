@@ -45,14 +45,15 @@
     _locationProvider = [[TTMockLocationProvider alloc] init];
     _recorder = [[TTRecorder alloc] initWithLocationProvider:_locationProvider];
     NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
-    [center addObserver:self selector:@selector(didStartRecording:) name:kDidStartRecordingNotification object:nil];
-    [center addObserver:self selector:@selector(didStopRecording:) name:kDidStopRecordingNotification object:nil];
-    [center addObserver:self selector:@selector(distanceDidChange:) name:kDistanceDidChangeNotification object:nil];
+    [center addObserver:self selector:@selector(didStartRecording:) name:kDidStartRecordingNotification object:_recorder];
+    [center addObserver:self selector:@selector(didStopRecording:) name:kDidStopRecordingNotification object:_recorder];
+    [center addObserver:self selector:@selector(distanceDidChange:) name:kDistanceDidChangeNotification object:_recorder];
 }
 
 - (void)tearDown
 {
     // Put teardown code here. This method is called after the invocation of each test method in the class.
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     [super tearDown];
 }
 

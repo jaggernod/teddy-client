@@ -8,8 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@class TTTripStore;
+
 @interface TTAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+
+- (TTTripStore*)tripStore;
 
 @end

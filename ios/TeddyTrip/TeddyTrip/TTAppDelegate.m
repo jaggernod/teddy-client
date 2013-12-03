@@ -7,11 +7,25 @@
 //
 
 #import "TTAppDelegate.h"
+#import "TTTripStore.h"
+
+@interface TTAppDelegate ()
+{
+    TTTripStore *_tripStore;
+}
+
+@end
 
 @implementation TTAppDelegate
 
+- (TTTripStore *)tripStore
+{
+    return _tripStore;
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    _tripStore = [[TTTripStore alloc] init];
     // Override point for customization after application launch.
     return YES;
 }

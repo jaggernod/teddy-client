@@ -29,6 +29,11 @@
     return self;
 }
 
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 - (int)count
 {
     return [_trips count];
@@ -43,6 +48,7 @@
 {
     NSString *name = [NSString stringWithFormat:@"Trip %d", [_trips count] + 1];
     [_trips insertObject:[[TTTrip alloc] initWithName:name fromRecorder:[note object]] atIndex:0];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kDidAddNewTripNotification object:self];
 }
 
 @end

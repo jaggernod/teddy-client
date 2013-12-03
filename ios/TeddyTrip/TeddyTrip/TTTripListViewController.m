@@ -7,26 +7,42 @@
 //
 
 #import "TTTripListViewController.h"
+#import "TTAppDelegate.h"
+#import "TTTripStore.h"
+#import "TTTrip.h"
 
 @interface TTTripListViewController ()
+{
+    TTTripStore *_tripStore;
+}
 
 @end
 
 @implementation TTTripListViewController
 
-- (id)initWithStyle:(UITableViewStyle)style
+static NSString * const kCellReuseIdentifier = @"TripCell";
+
+- (TTTripStore*)tripStore
 {
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
+    if (!_tripStore) {
+        TTAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+        _tripStore = [appDelegate tripStore];
     }
-    return self;
+    return _tripStore;
+}
+
+- (void)tripListDidUpdate:(NSNotification*)note
+{
+    [[self tableView] reloadData];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 
+    [[self tableView] registerClass:[UITableViewCell class] forCellReuseIdentifier:kCellReuseIdentifier];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tripListDidUpdate:) name:kDidAddNewTripNotification object:nil];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -44,24 +60,20 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
+    return [[self tripStore] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellReuseIdentifier forIndexPath:indexPath];
     
-    // Configure the cell...
+    TTTrip *trip = [[self tripStore] tripAtIndex:[indexPath row]];
+    [[cell textLabel] setText:[trip name]];
     
     return cell;
 }
