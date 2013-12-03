@@ -29,7 +29,7 @@
     // Put setup code here; it will be run once, before the first test case.
     _locationProvider = [[TTMockLocationProvider alloc] init];
     _recorder = [[TTRecorder alloc] initWithLocationProvider:_locationProvider];
-    _tripStore = [[TTTripStore alloc] initWithRecorder:_recorder];
+    _tripStore = [[TTTripStore alloc] init];
 }
 
 - (void)tearDown

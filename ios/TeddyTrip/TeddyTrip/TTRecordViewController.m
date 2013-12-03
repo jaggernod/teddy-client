@@ -27,7 +27,10 @@
     _locationManager = [[CLLocationManager alloc] init];
     _locationProvider = [[TTLocationProvider alloc] initWithLocationManager:_locationManager];
     _recorder = [[TTRecorder alloc] initWithLocationProvider:_locationProvider];
-    [_recorder setDelegate:self];
+    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+    [center addObserver:self selector:@selector(didStartRecording:) name:kDidStartRecordingNotification object:nil];
+    [center addObserver:self selector:@selector(didStopRecording:) name:kDidStopRecordingNotification object:nil];
+    [center addObserver:self selector:@selector(distanceDidChange:) name:kDistanceDidChangeNotification object:nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -46,21 +49,22 @@
     [_recorder stop];
 }
 
-- (void)didStartRecording
+- (void)didStartRecording:(NSNotification*)note
 {
     [[self startButton] setHidden:YES];
     [[self stopButton] setHidden:NO];
 }
 
-- (void)didStopRecording
+- (void)didStopRecording:(NSNotification*)note
 {
     [[self startButton] setHidden:NO];
     [[self stopButton] setHidden:YES];
 }
 
-- (void)distanceDidChange:(double)distanceMeters
+- (void)distanceDidChange:(NSNotification*)note
 {
-    [[self distanceLabel] setText:[NSString stringWithFormat:@"%.0f m", distanceMeters]];
+    NSNumber *distance = [[note userInfo] objectForKey:kUserInfoDistanceKey];
+    [[self distanceLabel] setText:[NSString stringWithFormat:@"%.0f m", [distance doubleValue]]];
 }
 
 @end

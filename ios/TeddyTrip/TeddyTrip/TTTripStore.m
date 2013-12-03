@@ -10,9 +10,8 @@
 #import "TTTrip.h"
 #import "TTRecorder.h"
 
-@interface TTTripStore () <TTRecorderDelegate>
+@interface TTTripStore ()
 {
-    __weak TTRecorder *_recorder;
     NSMutableArray *_trips;
 }
 
@@ -20,13 +19,12 @@
 
 @implementation TTTripStore
 
-- (id)initWithRecorder:(TTRecorder *)recorder
+- (id)init
 {
     self = [super init];
     if (self) {
-        _recorder = recorder;
-        [_recorder setDelegate:self];
         _trips = [[NSMutableArray alloc] init];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didStopRecording:) name:kDidStopRecordingNotification object:nil];
     }
     return self;
 }
@@ -41,10 +39,10 @@
     return [_trips objectAtIndex:index];
 }
 
-- (void)didStopRecording
+- (void)didStopRecording:(NSNotification*)note
 {
     NSString *name = [NSString stringWithFormat:@"Trip %d", [_trips count] + 1];
-    [_trips insertObject:[[TTTrip alloc] initWithName:name fromRecorder:_recorder] atIndex:0];
+    [_trips insertObject:[[TTTrip alloc] initWithName:name fromRecorder:[note object]] atIndex:0];
 }
 
 @end

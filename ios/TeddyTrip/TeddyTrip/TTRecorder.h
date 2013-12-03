@@ -9,20 +9,13 @@
 #import <Foundation/Foundation.h>
 #import "TTLocationProvider.h"
 
-@protocol TTRecorderDelegate <NSObject>
-
-@optional
-- (void)didStartRecording;
-@optional
-- (void)didStopRecording;
-@optional
-- (void)distanceDidChange:(double)distanceMeters;
-
-@end
+static NSString * const kDidStartRecordingNotification = @"TTDidStartRecording";
+static NSString * const kDidStopRecordingNotification = @"TTDidStopRecording";
+static NSString * const kDistanceDidChangeNotification = @"TTDistanceDidChange";
+static NSString * const kUserInfoDistanceKey = @"distance";
 
 @interface TTRecorder : NSObject <TTLocationProviderDelegate>
 
-@property (weak) id<TTRecorderDelegate> delegate;
 @property (readonly) BOOL isRecording;
 @property (readonly) double distanceMeters;
 @property (readonly) NSArray *trace;

@@ -10,7 +10,7 @@
 #import "TTRecorder.h"
 #import "TTMockLocationProvider.h"
 
-@interface TTRecorderTests : XCTestCase <TTRecorderDelegate>
+@interface TTRecorderTests : XCTestCase
 {
     TTMockLocationProvider *_locationProvider;
     TTRecorder *_recorder;
@@ -23,17 +23,17 @@
 
 @implementation TTRecorderTests
 
-- (void)didStartRecording
+- (void)didStartRecording:(NSNotification*)note
 {
     _recorderStartCount += 1;
 }
 
-- (void)didStopRecording
+- (void)didStopRecording:(NSNotification*)note
 {
     _recorderStopCount += 1;
 }
 
-- (void)distanceDidChange:(double)distanceMeters
+- (void)distanceDidChange:(NSNotification*)note
 {
     _recorderDistanceCount += 1;
 }
@@ -44,7 +44,10 @@
     // Put setup code here. This method is called before the invocation of each test method in the class.
     _locationProvider = [[TTMockLocationProvider alloc] init];
     _recorder = [[TTRecorder alloc] initWithLocationProvider:_locationProvider];
-    [_recorder setDelegate:self];
+    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+    [center addObserver:self selector:@selector(didStartRecording:) name:kDidStartRecordingNotification object:nil];
+    [center addObserver:self selector:@selector(didStopRecording:) name:kDidStopRecordingNotification object:nil];
+    [center addObserver:self selector:@selector(distanceDidChange:) name:kDistanceDidChangeNotification object:nil];
 }
 
 - (void)tearDown

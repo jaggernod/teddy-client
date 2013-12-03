@@ -51,14 +51,8 @@
     if (!_isRecording) {
         _isRecording = YES;
         [_trace removeAllObjects];
-        if ([self delegate]) {
-            if ([[self delegate] respondsToSelector:@selector(didStartRecording)]) {
-                [[self delegate] didStartRecording];
-            }
-            if ([[self delegate] respondsToSelector:@selector(distanceDidChange:)]) {
-                [[self delegate] distanceDidChange:[self distanceMeters]];
-            }
-        }
+        [[NSNotificationCenter defaultCenter] postNotificationName:kDidStartRecordingNotification object:self];
+        [self postCurrentDistance];
     }
 }
 
@@ -66,23 +60,21 @@
 {
     if (_isRecording) {
         _isRecording = NO;
-        if ([self delegate]) {
-            if ([[self delegate] respondsToSelector:@selector(didStopRecording)]) {
-                [[self delegate] didStopRecording];
-            }
-        }
+        [[NSNotificationCenter defaultCenter] postNotificationName:kDidStopRecordingNotification object:self];
     }
+}
+
+- (void)postCurrentDistance
+{
+    NSDictionary *distanceData = [NSDictionary dictionaryWithObject:[NSNumber numberWithDouble:[self distanceMeters]] forKey:kUserInfoDistanceKey];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kDistanceDidChangeNotification object:self userInfo:distanceData];
 }
 
 - (void)didReceiveLocation:(CLLocation*)location
 {
     if (_isRecording) {
         [_trace addObject:location];
-        if ([self delegate]) {
-            if ([[self delegate] respondsToSelector:@selector(distanceDidChange:)]) {
-                [[self delegate] distanceDidChange:[self distanceMeters]];
-            }
-        }
+        [self postCurrentDistance];
     }
 }
 
