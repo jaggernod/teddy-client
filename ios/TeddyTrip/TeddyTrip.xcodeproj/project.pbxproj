@@ -26,6 +26,8 @@
 		C027C047184D2B670035268D /* TTMockLocationProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = C027C046184D2B670035268D /* TTMockLocationProvider.m */; };
 		C027C049184D2BAA0035268D /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C027C048184D2BAA0035268D /* CoreLocation.framework */; };
 		C027C04C184E6C5D0035268D /* TTTripListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C027C04B184E6C5D0035268D /* TTTripListViewController.m */; };
+		C027C04E184E6DD40035268D /* TTTripStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C027C04D184E6DD40035268D /* TTTripStoreTests.m */; };
+		C027C051184E6E440035268D /* TTTripStore.m in Sources */ = {isa = PBXBuildFile; fileRef = C027C050184E6E440035268D /* TTTripStore.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +69,9 @@
 		C027C048184D2BAA0035268D /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		C027C04A184E6C5D0035268D /* TTTripListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTTripListViewController.h; sourceTree = "<group>"; };
 		C027C04B184E6C5D0035268D /* TTTripListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTTripListViewController.m; sourceTree = "<group>"; };
+		C027C04D184E6DD40035268D /* TTTripStoreTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTTripStoreTests.m; sourceTree = "<group>"; };
+		C027C04F184E6E440035268D /* TTTripStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTTripStore.h; sourceTree = "<group>"; };
+		C027C050184E6E440035268D /* TTTripStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTTripStore.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +146,8 @@
 				C027C040184B30CE0035268D /* TTRecorder.m */,
 				C027C042184D2B2B0035268D /* TTLocationProvider.h */,
 				C027C043184D2B2B0035268D /* TTLocationProvider.m */,
+				C027C04F184E6E440035268D /* TTTripStore.h */,
+				C027C050184E6E440035268D /* TTTripStore.m */,
 			);
 			path = TeddyTrip;
 			sourceTree = "<group>";
@@ -163,6 +170,7 @@
 				C027C030184550C00035268D /* Supporting Files */,
 				C027C045184D2B670035268D /* TTMockLocationProvider.h */,
 				C027C046184D2B670035268D /* TTMockLocationProvider.m */,
+				C027C04D184E6DD40035268D /* TTTripStoreTests.m */,
 			);
 			path = TeddyTripTests;
 			sourceTree = "<group>";
@@ -274,6 +282,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C027C01B184550C00035268D /* TTAppDelegate.m in Sources */,
+				C027C051184E6E440035268D /* TTTripStore.m in Sources */,
 				C027C044184D2B2B0035268D /* TTLocationProvider.m in Sources */,
 				C027C041184B30CE0035268D /* TTRecorder.m in Sources */,
 				C027C04C184E6C5D0035268D /* TTTripListViewController.m in Sources */,
@@ -288,6 +297,7 @@
 			files = (
 				C027C036184550C00035268D /* TTRecorderTests.m in Sources */,
 				C027C047184D2B670035268D /* TTMockLocationProvider.m in Sources */,
+				C027C04E184E6DD40035268D /* TTTripStoreTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
