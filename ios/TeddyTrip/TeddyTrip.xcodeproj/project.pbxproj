@@ -28,6 +28,7 @@
 		C027C04C184E6C5D0035268D /* TTTripListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C027C04B184E6C5D0035268D /* TTTripListViewController.m */; };
 		C027C04E184E6DD40035268D /* TTTripStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C027C04D184E6DD40035268D /* TTTripStoreTests.m */; };
 		C027C051184E6E440035268D /* TTTripStore.m in Sources */ = {isa = PBXBuildFile; fileRef = C027C050184E6E440035268D /* TTTripStore.m */; };
+		C027C057184E740C0035268D /* TTTrip.m in Sources */ = {isa = PBXBuildFile; fileRef = C027C056184E740C0035268D /* TTTrip.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +73,8 @@
 		C027C04D184E6DD40035268D /* TTTripStoreTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTTripStoreTests.m; sourceTree = "<group>"; };
 		C027C04F184E6E440035268D /* TTTripStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTTripStore.h; sourceTree = "<group>"; };
 		C027C050184E6E440035268D /* TTTripStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTTripStore.m; sourceTree = "<group>"; };
+		C027C055184E740C0035268D /* TTTrip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTTrip.h; sourceTree = "<group>"; };
+		C027C056184E740C0035268D /* TTTrip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTTrip.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +151,8 @@
 				C027C043184D2B2B0035268D /* TTLocationProvider.m */,
 				C027C04F184E6E440035268D /* TTTripStore.h */,
 				C027C050184E6E440035268D /* TTTripStore.m */,
+				C027C055184E740C0035268D /* TTTrip.h */,
+				C027C056184E740C0035268D /* TTTrip.m */,
 			);
 			path = TeddyTrip;
 			sourceTree = "<group>";
@@ -283,6 +288,7 @@
 			files = (
 				C027C01B184550C00035268D /* TTAppDelegate.m in Sources */,
 				C027C051184E6E440035268D /* TTTripStore.m in Sources */,
+				C027C057184E740C0035268D /* TTTrip.m in Sources */,
 				C027C044184D2B2B0035268D /* TTLocationProvider.m in Sources */,
 				C027C041184B30CE0035268D /* TTRecorder.m in Sources */,
 				C027C04C184E6C5D0035268D /* TTTripListViewController.m in Sources */,

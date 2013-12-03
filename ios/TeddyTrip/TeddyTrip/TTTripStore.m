@@ -7,12 +7,13 @@
 //
 
 #import "TTTripStore.h"
+#import "TTTrip.h"
 #import "TTRecorder.h"
 
 @interface TTTripStore () <TTRecorderDelegate>
 {
     __weak TTRecorder *_recorder;
-    int _count;
+    NSMutableArray *_trips;
 }
 
 @end
@@ -25,18 +26,24 @@
     if (self) {
         _recorder = recorder;
         [_recorder setDelegate:self];
+        _trips = [[NSMutableArray alloc] init];
     }
     return self;
 }
 
 - (int)count
 {
-    return _count;
+    return [_trips count];
+}
+
+- (TTTrip *)tripAtIndex:(int)index
+{
+    return [_trips objectAtIndex:index];
 }
 
 - (void)didStopRecording
 {
-    _count += 1;
+    [_trips addObject:[[TTTrip alloc] initFromRecorder:_recorder]];
 }
 
 @end

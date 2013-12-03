@@ -9,11 +9,13 @@
 #import <Foundation/Foundation.h>
 
 @class TTRecorder;
+@class TTTrip;
 
 @interface TTTripStore : NSObject
 
 - (id)initWithRecorder:(TTRecorder*)recorder;
 
 - (int)count;
+- (TTTrip*)tripAtIndex:(int)index;
 
 @end
