@@ -14,6 +14,7 @@
 
 - (id)initFromRecorder:(TTRecorder*)recorder;
 
+- (NSString*)name;
 - (double)distanceMeters;
 
 @end

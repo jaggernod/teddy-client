@@ -13,6 +13,11 @@
 #import "TTMockLocationProvider.h"
 
 @interface TTTripStoreTests : XCTestCase
+{
+    TTTripStore *_tripStore;
+    TTRecorder *_recorder;
+    TTMockLocationProvider *_locationProvider;
+}
 
 @end
 
@@ -22,6 +27,9 @@
 {
     [super setUp];
     // Put setup code here; it will be run once, before the first test case.
+    _locationProvider = [[TTMockLocationProvider alloc] init];
+    _recorder = [[TTRecorder alloc] initWithLocationProvider:_locationProvider];
+    _tripStore = [[TTTripStore alloc] initWithRecorder:_recorder];
 }
 
 - (void)tearDown
@@ -32,32 +40,45 @@
 
 - (void)testTripStoreEmptyOnCreation
 {
-    TTTripStore *tripStore = [[TTTripStore alloc] init];
-    XCTAssertEqual(0, [tripStore count]);
+    XCTAssertEqual(0, [_tripStore count]);
 }
 
 - (void)testTripStoreHasPositiveCountAfterRecording
 {
-    TTRecorder *recorder = [[TTRecorder alloc] initWithLocationProvider:[[TTMockLocationProvider alloc] init]];
-    TTTripStore *tripStore = [[TTTripStore alloc] initWithRecorder:recorder];
-    [recorder start];
-    [recorder stop];
-    XCTAssertEqual(1, [tripStore count]);
+    [self recordTrip:0];
+    XCTAssertEqual(1, [_tripStore count]);
 }
 
 - (void)testTripStoreHasTripAfterRecording
 {
-    TTMockLocationProvider *locationProvider = [[TTMockLocationProvider alloc] init];
-    TTRecorder *recorder = [[TTRecorder alloc] initWithLocationProvider:locationProvider];
-    TTTripStore *tripStore = [[TTTripStore alloc] initWithRecorder:recorder];
-    [recorder start];
+    [self recordTrip:2];
+    TTTrip *trip = [_tripStore tripAtIndex:0];
+    XCTAssertEqual([_recorder distanceMeters], [trip distanceMeters]);
+}
+
+- (void)testTripStoreRecordedTripHasName
+{
+    [self recordTrip:2];
+    TTTrip *trip = [_tripStore tripAtIndex:0];
+    XCTAssertTrue([[trip name] length] > 0);
+}
+
+- (void)recordTrip:(int)length
+{
     CLLocation *firstLocation = [[CLLocation alloc] initWithLatitude:53.2 longitude:13.4];
     CLLocation *secondLocation = [[CLLocation alloc] initWithLatitude:53.3 longitude:13.3];
-    [locationProvider addLocation:firstLocation];
-    [locationProvider addLocation:secondLocation];
-    [recorder stop];
-    TTTrip *trip = [tripStore tripAtIndex:0];
-    XCTAssertEqual([recorder distanceMeters], [trip distanceMeters]);
+    CLLocation *thirdLocation = [[CLLocation alloc] initWithLatitude:53.4 longitude:13.2];
+    [_recorder start];
+    if (length > 0) {
+        [_locationProvider addLocation:firstLocation];
+        if (length > 1) {
+            [_locationProvider addLocation:secondLocation];
+            if (length > 2) {
+                [_locationProvider addLocation:thirdLocation];
+            }
+        }
+    }
+    [_recorder stop];
 }
 
 @end

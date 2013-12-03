@@ -27,6 +27,11 @@
     return self;
 }
 
+- (NSString *)name
+{
+    return @"Trip";
+}
+
 - (double)distanceMeters
 {
     return _distanceMeters;
