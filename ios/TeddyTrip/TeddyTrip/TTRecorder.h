@@ -11,8 +11,11 @@
 
 @protocol TTRecorderDelegate <NSObject>
 
+@optional
 - (void)didStartRecording;
+@optional
 - (void)didStopRecording;
+@optional
 - (void)distanceDidChange:(double)distanceMeters;
 
 @end

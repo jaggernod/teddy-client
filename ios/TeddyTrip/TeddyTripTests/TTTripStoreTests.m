@@ -8,6 +8,8 @@
 
 #import <XCTest/XCTest.h>
 #import "TTTripStore.h"
+#import "TTRecorder.h"
+#import "TTMockLocationProvider.h"
 
 @interface TTTripStoreTests : XCTestCase
 
@@ -31,6 +33,15 @@
 {
     TTTripStore *tripStore = [[TTTripStore alloc] init];
     XCTAssertEqual(0, [tripStore count]);
+}
+
+- (void)testTripStoreHasPositiveCountAfterRecording
+{
+    TTRecorder *recorder = [[TTRecorder alloc] initWithLocationProvider:[[TTMockLocationProvider alloc] init]];
+    TTTripStore *tripStore = [[TTTripStore alloc] initWithRecorder:recorder];
+    [recorder start];
+    [recorder stop];
+    XCTAssertEqual(1, [tripStore count]);
 }
 
 @end

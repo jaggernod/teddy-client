@@ -8,7 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
+@class TTRecorder;
+
 @interface TTTripStore : NSObject
+
+- (id)initWithRecorder:(TTRecorder*)recorder;
 
 - (int)count;
 

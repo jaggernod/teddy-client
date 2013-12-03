@@ -52,8 +52,12 @@
         _isRecording = YES;
         [_trace removeAllObjects];
         if ([self delegate]) {
-            [[self delegate] didStartRecording];
-            [[self delegate] distanceDidChange:[self distanceMeters]];
+            if ([[self delegate] respondsToSelector:@selector(didStartRecording)]) {
+                [[self delegate] didStartRecording];
+            }
+            if ([[self delegate] respondsToSelector:@selector(distanceDidChange:)]) {
+                [[self delegate] distanceDidChange:[self distanceMeters]];
+            }
         }
     }
 }
@@ -63,7 +67,9 @@
     if (_isRecording) {
         _isRecording = NO;
         if ([self delegate]) {
-            [[self delegate] didStopRecording];
+            if ([[self delegate] respondsToSelector:@selector(didStopRecording)]) {
+                [[self delegate] didStopRecording];
+            }
         }
     }
 }
@@ -73,7 +79,9 @@
     if (_isRecording) {
         [_trace addObject:location];
         if ([self delegate]) {
-            [[self delegate] distanceDidChange:[self distanceMeters]];
+            if ([[self delegate] respondsToSelector:@selector(distanceDidChange:)]) {
+                [[self delegate] distanceDidChange:[self distanceMeters]];
+            }
         }
     }
 }
