@@ -40,7 +40,7 @@ static NSString * const kCellReuseIdentifier = @"TripCell";
 {
     [super viewDidLoad];
 
-    [[self tableView] registerClass:[UITableViewCell class] forCellReuseIdentifier:kCellReuseIdentifier];
+//    [[self tableView] registerClass:[UITableViewCell class] forCellReuseIdentifier:kCellReuseIdentifier];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tripListDidUpdate:) name:kDidAddNewTripNotification object:nil];
     // Uncomment the following line to preserve selection between presentations.
@@ -70,10 +70,15 @@ static NSString * const kCellReuseIdentifier = @"TripCell";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellReuseIdentifier forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellReuseIdentifier];
+    
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:kCellReuseIdentifier];
+    }
     
     TTTrip *trip = [[self tripStore] tripAtIndex:[indexPath row]];
     [[cell textLabel] setText:[trip name]];
+    [[cell detailTextLabel] setText:[NSString stringWithFormat:@"%.0f m", [trip distanceMeters]]];
     
     return cell;
 }
