@@ -11,6 +11,7 @@
 
 @interface TTTrip ()
 {
+    NSString *_name;
     double _distanceMeters;
 }
 
@@ -18,10 +19,11 @@
 
 @implementation TTTrip
 
-- (id)initFromRecorder:(TTRecorder *)recorder
+- (id)initWithName:(NSString *)name fromRecorder:(TTRecorder *)recorder
 {
     self = [super init];
     if (self) {
+        _name = name;
         _distanceMeters = [recorder distanceMeters];
     }
     return self;
@@ -29,7 +31,7 @@
 
 - (NSString *)name
 {
-    return @"Trip";
+    return _name;
 }
 
 - (double)distanceMeters

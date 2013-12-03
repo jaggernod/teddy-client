@@ -12,7 +12,7 @@
 
 @interface TTTrip : NSObject
 
-- (id)initFromRecorder:(TTRecorder*)recorder;
+- (id)initWithName:(NSString*)name fromRecorder:(TTRecorder*)recorder;
 
 - (NSString*)name;
 - (double)distanceMeters;

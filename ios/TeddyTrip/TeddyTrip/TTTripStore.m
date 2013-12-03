@@ -43,7 +43,8 @@
 
 - (void)didStopRecording
 {
-    [_trips addObject:[[TTTrip alloc] initFromRecorder:_recorder]];
+    NSString *name = [NSString stringWithFormat:@"Trip %d", [_trips count] + 1];
+    [_trips addObject:[[TTTrip alloc] initWithName:name fromRecorder:_recorder]];
 }
 
 @end
