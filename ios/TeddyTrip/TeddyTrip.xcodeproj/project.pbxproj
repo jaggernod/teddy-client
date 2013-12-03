@@ -14,7 +14,7 @@
 		C027C017184550C00035268D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C027C016184550C00035268D /* main.m */; };
 		C027C01B184550C00035268D /* TTAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C027C01A184550C00035268D /* TTAppDelegate.m */; };
 		C027C01E184550C00035268D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C027C01C184550C00035268D /* Main.storyboard */; };
-		C027C021184550C00035268D /* TTViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C027C020184550C00035268D /* TTViewController.m */; };
+		C027C021184550C00035268D /* TTRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C027C020184550C00035268D /* TTRecordViewController.m */; };
 		C027C023184550C00035268D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C027C022184550C00035268D /* Images.xcassets */; };
 		C027C02A184550C00035268D /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C027C029184550C00035268D /* XCTest.framework */; };
 		C027C02B184550C00035268D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C027C00A184550C00035268D /* Foundation.framework */; };
@@ -25,6 +25,7 @@
 		C027C044184D2B2B0035268D /* TTLocationProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = C027C043184D2B2B0035268D /* TTLocationProvider.m */; };
 		C027C047184D2B670035268D /* TTMockLocationProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = C027C046184D2B670035268D /* TTMockLocationProvider.m */; };
 		C027C049184D2BAA0035268D /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C027C048184D2BAA0035268D /* CoreLocation.framework */; };
+		C027C04C184E6C5D0035268D /* TTTripListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C027C04B184E6C5D0035268D /* TTTripListViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,8 +50,8 @@
 		C027C019184550C00035268D /* TTAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTAppDelegate.h; sourceTree = "<group>"; };
 		C027C01A184550C00035268D /* TTAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTAppDelegate.m; sourceTree = "<group>"; };
 		C027C01D184550C00035268D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		C027C01F184550C00035268D /* TTViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTViewController.h; sourceTree = "<group>"; };
-		C027C020184550C00035268D /* TTViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTViewController.m; sourceTree = "<group>"; };
+		C027C01F184550C00035268D /* TTRecordViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTRecordViewController.h; sourceTree = "<group>"; };
+		C027C020184550C00035268D /* TTRecordViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTRecordViewController.m; sourceTree = "<group>"; };
 		C027C022184550C00035268D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C027C028184550C00035268D /* TeddyTripTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TeddyTripTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C027C029184550C00035268D /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -64,6 +65,8 @@
 		C027C045184D2B670035268D /* TTMockLocationProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTMockLocationProvider.h; sourceTree = "<group>"; };
 		C027C046184D2B670035268D /* TTMockLocationProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMockLocationProvider.m; sourceTree = "<group>"; };
 		C027C048184D2BAA0035268D /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		C027C04A184E6C5D0035268D /* TTTripListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTTripListViewController.h; sourceTree = "<group>"; };
+		C027C04B184E6C5D0035268D /* TTTripListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTTripListViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,8 +131,10 @@
 				C027C019184550C00035268D /* TTAppDelegate.h */,
 				C027C01A184550C00035268D /* TTAppDelegate.m */,
 				C027C01C184550C00035268D /* Main.storyboard */,
-				C027C01F184550C00035268D /* TTViewController.h */,
-				C027C020184550C00035268D /* TTViewController.m */,
+				C027C01F184550C00035268D /* TTRecordViewController.h */,
+				C027C020184550C00035268D /* TTRecordViewController.m */,
+				C027C04A184E6C5D0035268D /* TTTripListViewController.h */,
+				C027C04B184E6C5D0035268D /* TTTripListViewController.m */,
 				C027C022184550C00035268D /* Images.xcassets */,
 				C027C011184550C00035268D /* Supporting Files */,
 				C027C03F184B30CE0035268D /* TTRecorder.h */,
@@ -271,8 +276,9 @@
 				C027C01B184550C00035268D /* TTAppDelegate.m in Sources */,
 				C027C044184D2B2B0035268D /* TTLocationProvider.m in Sources */,
 				C027C041184B30CE0035268D /* TTRecorder.m in Sources */,
+				C027C04C184E6C5D0035268D /* TTTripListViewController.m in Sources */,
 				C027C017184550C00035268D /* main.m in Sources */,
-				C027C021184550C00035268D /* TTViewController.m in Sources */,
+				C027C021184550C00035268D /* TTRecordViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

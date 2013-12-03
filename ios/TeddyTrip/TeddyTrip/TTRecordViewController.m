@@ -1,15 +1,15 @@
 //
-//  TTViewController.m
+//  TTRecordViewController.m
 //  TeddyTrip
 //
 //  Created by continuous integration on 26/11/13.
 //
 //
 
-#import "TTViewController.h"
+#import "TTRecordViewController.h"
 #import "TTRecorder.h"
 
-@interface TTViewController ()
+@interface TTRecordViewController ()
 {
     CLLocationManager *_locationManager;
     TTLocationProvider *_locationProvider;
@@ -18,7 +18,7 @@
 
 @end
 
-@implementation TTViewController
+@implementation TTRecordViewController
 
 - (void)viewDidLoad
 {
